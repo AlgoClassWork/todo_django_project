@@ -1,7 +1,10 @@
-<h1> Главная страница </h1>
+{% for task in tasks %}
+    <p>
+    {{ task.title }}
+    {{ task.completed }}
+    {{ task.created_at }}
+    </p>
+{% endfor %}
 
-<h2> Сделать уроки </h2> <input type="checkbox"> <br>
 
-<h2> Помыть машину </h2> <input type="checkbox"> <br>
 
-<h2> Поиграть в CS GO </h2> <input type="checkbox"> <br>
