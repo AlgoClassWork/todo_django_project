@@ -1,10 +1,125 @@
-{% for task in tasks %}
-    <p>
-    {{ task.title }}
-    {{ task.completed }}
-    {{ task.created_at }}
-    </p>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список задач</title>
+    <style>
+        /* Общие настройки */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
 
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #4CAF50;
+        }
+
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .task-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .task-card.completed {
+            background-color: #e0f7e0;
+        }
+
+        .task-info {
+            max-width: 70%;
+        }
+
+        .task-title {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .task-date {
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        .task-status {
+            font-size: 1.1em;
+        }
+
+        .status {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .completed-status {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .pending-status {
+            background-color: #FF9800;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Мои задачи</h1>
+        </header>
+
+        <div class="task-list">
+            {% for task in tasks %}
+                <div class="task-card {% if task.completed %}completed{% endif %}">
+                    <div class="task-info">
+                        <h2 class="task-title">{{ task.title }}</h2>
+                        <p class="task-date">Создано: {{ task.created_at|date:"d M Y" }}</p>
+                    </div>
+                    <div class="task-status">
+                        <span class="status {% if task.completed %}completed-status{% else %}pending-status{% endif %}">
+                            {% if task.completed %}Завершено{% else %}В процессе{% endif %}
+                        </span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
