@@ -103,6 +103,10 @@
     <div class="container">
         <header>
             <h1>Мои задачи</h1>
+            <form action="{% url 'add' %}" method="post">
+                <input type="text" placeholder="Задача">
+                <button> Добавить </button>
+            </form>
         </header>
 
         <div class="task-list">
