@@ -16,12 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from todo.views import home
+from todo.views import home, add_task
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # http://127.0.0.1:8000/
     path('', home, name='home') , 
     # http://127.0.0.1:8000/add/
-    path('add/',home, name='add') , 
+    path('add/', add_task , name='add') , 
 ]
