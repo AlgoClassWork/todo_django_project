@@ -162,7 +162,9 @@
                     </div>
                     <div class="task-status">
                         <span class="status {% if task.completed %}completed-status{% else %}pending-status{% endif %}">
-                            {% if task.completed %}Завершено{% else %}В процессе{% endif %}
+                            <a href="">
+                                {% if task.completed %}Завершено{% else %}В процессе{% endif %}
+                            </a>
                         </span>
                     </div>
 
