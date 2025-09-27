@@ -165,6 +165,9 @@
                             {% if task.completed %}Завершено{% else %}В процессе{% endif %}
                         </span>
                     </div>
+
+                    <a href="{% url 'delete' task.id %}"> ❌ </a>
+
                 </div>
             {% endfor %}
         </div>
