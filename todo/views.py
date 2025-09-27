@@ -13,3 +13,9 @@ def add_task(request):
     title = request.POST.get('title')
     Task.objects.create(title=title)
     return redirect('home')
+
+# http://127.0.0.1:8000/delete/8
+def delete_task(request, task_id):
+    task = Task.objects.get(id=task_id)
+    task.delete()
+    return redirect('home')
